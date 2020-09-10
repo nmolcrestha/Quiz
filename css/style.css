@@ -1,0 +1,152 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #341f97;
+}
+
+.welcome-text{
+    width: 400px;
+}
+
+.welcome-form input,
+.welcome-form button{
+    display: block;
+    width: 100%;
+}
+
+.welcome-form input{
+    margin-bottom: 15px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+    border-bottom: 2px solid #fff;
+}
+
+.welcome-form button{
+    font-size: 22px;
+    padding: 20px 0;
+    border: none;
+    background-color:  #fff;
+    color: #341f97;
+    border-radius: 100px;
+    transition: 0.4s all;
+}
+
+.welcome-form button:hover{
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.welcome-form input:focus,
+.welcome-form button:focus{
+    outline: none;
+}
+
+.quiz{
+    width: 800px;
+    height: 500px;
+    background-color: #fff;
+    display: grid;
+    grid-template-rows: 60px auto;
+}
+
+.quiz-header{
+    background-color: #fff;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0px 2px  5px 1px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.quiz-body{
+    background-color: #ecf0f1;
+    padding: 30px;
+}
+
+.quiz-user{
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+
+.quiz-timer{
+    display: flex;
+    align-items: center;
+    background-color: #341f97;
+    color: #fff;
+    padding: 0 30px;
+}
+
+ul.option-group{
+    margin: 30px 0;
+}
+
+.option{
+    list-style: none;
+    background-color: #fff;
+    width: 300px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: 2px solid transparent;
+    transition: border 0.5s;
+}
+
+.option:hover{
+    border: 2px solid #341f97;
+    cursor: pointer;
+    color: #000;
+}
+
+.btn-next{
+    background-color: #341f97;
+    color: #fff;
+    padding: 15px 35px;
+    border-radius: 30px;
+    transition: all 0.5s;
+    border: none;
+}
+
+.btn-next:hover{
+    cursor: pointer;
+    color: #341f97;
+    background-color: #fff;
+    box-shadow: 0px 0px  10px 1px rgba(0, 0, 0, 0.3);
+}
+
+.active, .active:hover{
+    background-color: #341f97;
+    color: #fff;
+}
+
+.award{
+    text-align: center;
+    color: #fff;
+}
+
+.award img{
+    width: 60%;
+}
+
+.username,
+.user-point,
+.user-time{
+    margin-bottom: 10px;
+}
