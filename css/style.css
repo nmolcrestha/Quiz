@@ -150,3 +150,11 @@ ul.option-group{
 .user-time{
     margin-bottom: 10px;
 }
+
+#question h2{
+    margin-bottom: 20px;
+}
+
+label{
+    display: block;
+}

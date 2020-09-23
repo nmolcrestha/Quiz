@@ -52,22 +52,41 @@ const showQuestion = (count) => {
     question.innerHTML = `
     <h2>Q${questionCount+1}. ${questions[count].question}</h2>`;
     let output = '';
-    questions[count].options.map( item => output += `<li class="option">${item}</li>` );
-    question.innerHTML = output;
-    questions[count].answer.length > 1 ? toggleManyActive() : toggleActiveOne();
+    if(questions[count].answer.length > 1){
+      questions[count].options.map( item => output += `
+    <label class="option">
+				<input type="checkbox" name="quiz" class="quiz-option" value='${item}'> ${item}
+		</label>` );
+    } else{
+      questions[count].options.map( item => output += `
+    <label class="option">
+				<input type="radio" name="quiz" class="quiz-option" value='${item}'> ${item}
+		</label>` );
+    }
+
+    question.innerHTML += output;
+   
 }
 
 const nextQuestion = () => {
+  const userAnswer = [];
+  let selectedAnswer = document.querySelectorAll('input:checked');
+  
+  for (let i = 0; i < selectedAnswer.length; i++) {
+  userAnswer.push(selectedAnswer[i].value)
+}
     
-    let userAnswer = document.querySelectorAll('li.option.active');
+    
+    //   console.log(userAnswer);
+      
 
-    let list = [].slice.call(userAnswer);
-    let innertext = list.map(function(e) { return e.innerText; }).sort();
-    console.log(questions[questionCount].question);
-    console.log(JSON.stringify(innertext));
-    console.log(JSON.stringify(questions[questionCount].answer.sort()));
+    // let list = [].slice.call(userAnswer);
+    // let innertext = list.map(function(e) { return e.innerText; }).sort();
+    // questions[questionCount].question;
+    // console.log(JSON.stringify(userAnswer.sort()));
+    // console.log(JSON.stringify(questions[questionCount].answer.sort()));
 
-    const valid = JSON.stringify(innertext) === JSON.stringify(questions[questionCount].answer.sort());
+    const valid = JSON.stringify(userAnswer.sort()) === JSON.stringify(questions[questionCount].answer.sort());
 
     if(valid){
         points += 10;
@@ -87,36 +106,3 @@ const nextQuestion = () => {
 
 
 document.querySelector('.btn-next').addEventListener('click', nextQuestion);
-
-
-const toggleManyActive = () => {
-    const  option = document.querySelectorAll('.option');
-   for(let i = 0; i < option.length; i++){
-
-       option[i].addEventListener('click', () => {
-          //  for(let j = 0; j < option.length; j++){
-          //      if(option[j].classList.contains('active')){
-          //       option[j].classList.remove('active')
-          //      }
-          //  }
-           option[i].classList.toggle('active');
-          //  console.log(questions[questionCount].answer.length > 1);
-        })
-   }
-}
-
-const toggleActiveOne = () => {
-  const  option = document.querySelectorAll('.option');
- for(let i = 0; i < option.length; i++){
-
-     option[i].addEventListener('click', () => {
-         for(let j = 0; j < option.length; j++){
-             if(option[j].classList.contains('active')){
-              option[j].classList.remove('active')
-             }
-         }
-         option[i].classList.add('active');
-        //  console.log(questions[questionCount].answer.length > 1);
-      })
- }
-}
